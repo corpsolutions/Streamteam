@@ -1,0 +1,38 @@
+services:
+  psql:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - sts_postgres_data:/var/lib/postgresql/data
+  
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - sts_mongo_data:/data/db
+  
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - sts_redis_data:/data
+  
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+volumes:
+  sts_postgres_data:
+    external: false
+  sts_mongo_data:
+    external: false
+  sts_redis_data:
+    external: false

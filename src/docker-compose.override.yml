@@ -1,0 +1,92 @@
+version: '3.4'
+
+services:
+  elasticsearch:
+    build:
+      context: elk/elasticsearch/
+    volumes:
+      - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+  
+  logstash:
+    build:
+      context: elk/logstash/
+    volumes:
+      - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "8080:8080"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    depends_on:
+      - elasticsearch
+  
+  kibana:
+    build:
+      context: elk/kibana/
+    volumes:
+      - ./elk/kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+  
+  psql:
+    environment:
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    ports:
+      - "5432:5432"
+    volumes:
+      - sts_postgres_data:/var/lib/postgresql/data
+  
+  mongo:
+    ports:
+      - "27017:27017"
+    volumes:
+      - sts_mongo_data:/data/db
+  
+  redis:
+    ports:
+      - "6379:6379"
+    volumes:
+      - sts_redis_data:/data
+  
+  rabbitmq:
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  
+  envoy:
+    volumes:
+      - ./ApiGateways/Envoy/config/streamteam-web:/etc/envoy
+    ports:
+      - "5202:80"
+      - "15202:8001"
+  
+  streamteamagg:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    ports:
+      - "5100:80"
+  
+  identity-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ASPNETCORE_URLS=http://*:80
+      - SPA_CLIENT=${STS_EXTERNAL_DNS_NAME_OR_IP}:5100
+      - UseCustomizationData=True
+      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+    ports:
+      - "5101:80"
+
+volumes:
+  sts_postgres_data:
+    external: false
+  sts_mongo_data:
+    external: false
