@@ -59,7 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Bff.Streamteam", "Web.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Streamteam.HttpAggregator", "ApiGateways\Web.Bff.Streamteam\aggregator\Web.Streamteam.HttpAggregator.csproj", "{1C54501E-FA8D-4AE9-BBAD-696DE614F260}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authenticate", "Authenticate", "{E3F858D5-667D-428C-B6EC-9B57F3029507}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{E3F858D5-667D-428C-B6EC-9B57F3029507}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounting", "Accounting", "{762181BB-569A-4FF2-83F6-AB29EF5DA948}"
 EndProject
@@ -80,6 +80,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docdrive", "Docdrive", "{C3BB46BF-8A69-44A3-A485-79E385CBC8E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corpchat.Domain", "Services\Corpchat\Corpchat.Domain\Corpchat.Domain.csproj", "{A4E49C1A-D54B-471D-A408-6C7F97F5F099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Core", "Services\Identity\Identity.Core\Identity.Core.csproj", "{6F12B93F-0D70-4EA9-96E0-4A06621F38DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Infrastructure", "Services\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj", "{DDFEC0A8-D4E2-48C5-9E62-1609D5261A0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "Services\Identity\Identity.API\Identity.API.csproj", "{18B5EE30-44A8-4B98-8AE0-885780C13871}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -120,6 +126,9 @@ Global
 		{5F5458EC-088C-44A0-8B04-BD43B785A5D2} = {884E3FDE-A697-44AE-A330-0756B02587B7}
 		{C3BB46BF-8A69-44A3-A485-79E385CBC8E8} = {884E3FDE-A697-44AE-A330-0756B02587B7}
 		{A4E49C1A-D54B-471D-A408-6C7F97F5F099} = {A5C8B626-9E67-428E-93BB-8B1A9B1B1AB8}
+		{6F12B93F-0D70-4EA9-96E0-4A06621F38DD} = {E3F858D5-667D-428C-B6EC-9B57F3029507}
+		{DDFEC0A8-D4E2-48C5-9E62-1609D5261A0B} = {E3F858D5-667D-428C-B6EC-9B57F3029507}
+		{18B5EE30-44A8-4B98-8AE0-885780C13871} = {E3F858D5-667D-428C-B6EC-9B57F3029507}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{27265217-3480-4E7B-B812-D13F1FE4FC74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -158,5 +167,17 @@ Global
 		{A4E49C1A-D54B-471D-A408-6C7F97F5F099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4E49C1A-D54B-471D-A408-6C7F97F5F099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4E49C1A-D54B-471D-A408-6C7F97F5F099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F12B93F-0D70-4EA9-96E0-4A06621F38DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F12B93F-0D70-4EA9-96E0-4A06621F38DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F12B93F-0D70-4EA9-96E0-4A06621F38DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F12B93F-0D70-4EA9-96E0-4A06621F38DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDFEC0A8-D4E2-48C5-9E62-1609D5261A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFEC0A8-D4E2-48C5-9E62-1609D5261A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFEC0A8-D4E2-48C5-9E62-1609D5261A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFEC0A8-D4E2-48C5-9E62-1609D5261A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B5EE30-44A8-4B98-8AE0-885780C13871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B5EE30-44A8-4B98-8AE0-885780C13871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B5EE30-44A8-4B98-8AE0-885780C13871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B5EE30-44A8-4B98-8AE0-885780C13871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
