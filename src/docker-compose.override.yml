@@ -55,35 +55,6 @@ services:
       - "6379:6379"
     volumes:
       - sts_redis_data:/data
-  
-  rabbitmq:
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-  
-  envoy:
-    volumes:
-      - ./ApiGateways/Envoy/config/streamteam-web:/etc/envoy
-    ports:
-      - "5202:80"
-      - "15202:8001"
-  
-  streamteamagg:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-    ports:
-      - "5100:80"
-  
-  identity-api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-      - ASPNETCORE_URLS=http://*:80
-      - SPA_CLIENT=${STS_EXTERNAL_DNS_NAME_OR_IP}:5100
-      - UseCustomizationData=True
-      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-      - OrchestratorType=${ORCHESTRATOR_TYPE}
-    ports:
-      - "5101:80"
 
 volumes:
   sts_postgres_data:

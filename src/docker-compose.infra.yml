@@ -22,12 +22,6 @@ services:
       - "6379:6379"
     volumes:
       - sts_redis_data:/data
-  
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    ports:
-      - "15672:15672"
-      - "5672:5672"
 
 volumes:
   sts_postgres_data:
